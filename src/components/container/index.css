@@ -1,0 +1,13 @@
+.Container{
+    width: 1022px;
+    height: 670px;
+    background-color: rgb(250,250,250);
+}
+
+.tabs{
+    width: 822px;
+    height: 570px;
+    display: inline-block;
+    vertical-align: top;
+}
+

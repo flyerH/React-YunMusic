@@ -1,0 +1,82 @@
+/*!
+ * Created by He on 2017/7/11.
+ * E-mail:h@strawtc.cn
+ */
+import React, {Component} from 'react';
+import './index.css';
+import softImg from '../../static/images/softName.png';
+import arrl from '../../static/images/arrl.png';
+import arrr from '../../static/images/arrr.png';
+import userImg from '../../static/images/LOVE_static.jpg';
+
+class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showPla: true
+    }
+  }
+
+  componentDidMount() {
+    const input = document.getElementById('search');
+    input.addEventListener('focus', this.showPla.bind(this));
+    input.addEventListener('blur', this.showPla.bind(this));
+  }
+
+  componentWillUnmount() {
+    const input = document.getElementById('search');
+    input.removeListener('focus', this.showPla.bind(this));
+    input.removeListener('blur', this.showPla.bind(this));
+  }
+
+  showPla() {
+    if (this.state.showPla !== false)
+      this.setState({
+        showPla: false
+      });
+    else
+      this.setState({
+        showPla: true
+      })
+  }
+
+  render() {
+    return (
+        <div className="Header">
+          <img src={softImg} className="softImg"/>
+          <div className="button inline">
+            <div className="inline">
+              <img src={arrl}/>
+            </div>
+            <div className="inline">
+              <img src={arrr}/>
+            </div>
+          </div>
+          <div className="search inline">
+            <input type="text" placeholder={this.state.showPla ? '搜索音乐，歌手，歌词，用户' : ''} id="search"/>
+            <button></button>
+          </div>
+          <div className="userInfo inline">
+            <img src={userImg}/>
+            <span className="userName">享受音乐
+               <div className="userChoice inline"> </div>
+            </span>
+          </div>
+          <div className="system inline">
+            <button className="skin"> </button>
+            <button className="email"> </button>
+            <button className="settings"> </button>
+          </div>
+          <div className="line inline"> </div>
+          <div className="window inline">
+            <button className="minimode"> </button>
+            <button className="minimize"> </button>
+            <button className="maximize"> </button>
+            <button className="close"> </button>
+          </div>
+        </div>
+    );
+  }
+}
+
+export default Header;

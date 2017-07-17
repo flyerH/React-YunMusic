@@ -1,0 +1,69 @@
+.Sidebar {
+    width: 200px;
+    height: 570px;
+    background-color: rgb(245, 245, 247);
+    border-right: 1px solid rgb(225, 225, 226);
+    box-sizing: border-box;
+}
+
+.inline {
+    display: inline-block;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.title > li > p {
+    margin: 0;
+    padding: 9px;
+    color: rgb(125, 125, 125);
+    font-size: 13px;
+}
+
+.sideTab li {
+    cursor: pointer;
+    padding: 6px 5px 6px 15px;
+    border-left: 3px solid transparent;
+}
+
+.sideTab p {
+    margin: 0;
+    font-size: 13px;
+    color: black;
+    display: inline-block;
+}
+
+.sideTab li {
+    opacity: 0.6;
+}
+
+.sideTab li:hover {
+    opacity: 1;
+}
+
+.sideTab li::before {
+    content: ' ';
+    display: inline-block;
+    background-image: url("../../../static/images/sidebar.png");
+    width: 20px;
+    height: 18px;
+    margin-right: 5px;
+    vertical-align: -4px;
+}
+
+.sideTab li:nth-child(1)::before {
+    background-position: -15px -4px;
+}
+
+.sideTab li:nth-child(2)::before {
+    background-position: -15px -38px;
+}
+
+.select {
+    background-color: rgb(230, 231, 234);
+    opacity: 1 !important;
+    border-left-color: rgb(198, 47, 47) !important;
+}
