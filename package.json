@@ -2,15 +2,20 @@
   "name": "React-YunMusic",
   "version": "0.1.0",
   "author": {
-    "name":"flyer_H",
+    "name": "flyer_H",
     "email": "h@strawtc.cn"
   },
-  "license" : "MPL-2.0",
-  "keywords": [ "react", "仿网易云音乐", "HTML5音乐播放器" ],
+  "license": "MPL-2.0",
+  "keywords": [
+    "react",
+    "仿网易云音乐",
+    "HTML5音乐播放器"
+  ],
   "private": false,
   "dependencies": {
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "react-scripts": "1.0.10"

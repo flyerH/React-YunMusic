@@ -1,13 +1,23 @@
-.Container{
-    width: 1022px;
+.Container {
+    width: 1023px;
     height: 670px;
-    background-color: rgb(250,250,250);
+    background-color: rgb(250, 250, 250);
 }
 
-.tabs{
-    width: 822px;
-    height: 570px;
+.tabs {
+    width: 823px;
+    height: 571px;
     display: inline-block;
     vertical-align: top;
+    overflow-y: scroll;
+    scrollbar-face-color: rgb(225,225,226);
 }
 
+.tabs::-webkit-scrollbar {
+    width: 7px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+    background: rgb(225,225,226);
+    border-radius: 50px;
+}

@@ -6,7 +6,7 @@
     width: 100%;
     height: 50px;
     background-color: rgb(198, 47, 47);
-    line-height: 48px;
+    line-height: 50px;
 }
 
 .softImg {
@@ -110,8 +110,7 @@ button {
 }
 
 .userInfo {
-    width: 150px;
-    margin-left: 165px;
+    margin-right: 20px;
     vertical-align: middle;
 }
 
@@ -124,11 +123,14 @@ button {
 }
 
 .userName {
-    margin-left: 6px;
+    margin-left: 4px;
     color: white;
     font-size: 12px;
     opacity: 0.8;
     cursor: pointer;
+    display: inline-block;
+    -webkit-transform:scale(0.96);
+    font-weight: lighter;
 }
 
 .userName:hover {
@@ -142,11 +144,11 @@ button {
     border-style: solid;
     border-color: white transparent transparent transparent;
     vertical-align: 2px;
-    margin-left: 15px;
+    margin-left: 10px;
 }
 
 .system {
-    margin-left: -4px;
+    margin-left: 209px;
 }
 
 .skin, .email, .settings,.minimode, .minimize, .maximize, .close {

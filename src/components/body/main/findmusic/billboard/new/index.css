@@ -1,0 +1,121 @@
+.billboard_list2_title {
+    height: 90px;
+    cursor: pointer;
+    position: relative;
+}
+.billboard_list2_title_bg1{
+    background: linear-gradient(to right, rgb(25, 156, 182), rgb(31, 163, 185) 1%, rgb(55, 176, 190), rgb(69, 196, 205));
+}
+.billboard_list2_title_bg2{
+    background: linear-gradient(to right, rgb(203, 48, 93), rgb(213, 62, 107) 1%, rgb(221, 77, 120), rgb(236, 85, 129));
+}
+.billboard_list2_title_bg3{
+    background: linear-gradient(to right, rgb(187, 70, 50), rgb(212, 94, 68) 1%, rgb(207, 102, 70), rgb(206, 108, 69));
+}
+.billboard_list2_title_bg4{
+    background: linear-gradient(to right, rgb(131, 55, 194), rgb(144, 77, 209) 1%, rgb(153, 78, 207), rgb(161, 79, 207));
+}
+.updateTime2{
+    color: white;
+    opacity: 0.4;
+    font-size: 12px;
+    position: absolute;
+    left: 75px;
+    bottom: 19px;
+}
+
+.billboard_list2_title_img {
+    margin-left: 13px;
+}
+
+.billboard_list2_play {
+    border-radius: 100%;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -20px;
+    opacity: 0.6;
+}
+
+.billboard_list2_play:hover {
+    opacity: 1;
+}
+
+.billboard_list2_body_ul li {
+    font-size: 12px;
+    line-height: 14px;
+    padding: 7px 9px 7px 15px;
+    box-sizing: border-box;
+}
+
+.billboard_list2_body_ul span {
+    cursor: default;
+}
+
+.billboard_list2_body_ul span:nth-of-type(1) {
+    vertical-align: middle;
+    font-size: 16px;
+    color: rgb(102, 102, 102);
+}
+
+.billboard_list2_body_ul li:nth-of-type(odd) {
+    background-color: rgb(245, 245, 247);
+}
+
+.billboard_list2_body_ul li:hover {
+    background-color: rgb(235, 236, 237);
+}
+
+.billboard_list2_body_ul li:nth-child(-n+3) > span:first-of-type {
+    color: rgb(205, 41, 41);
+}
+
+.billboard_list2_body_ul span:nth-of-type(2) {
+    width: 20px;
+    font-size: 12px;
+    text-align: left;
+    color: rgb(136, 136, 136);
+    -webkit-transform: scale(0.9);
+    margin: 0 4px 0 3px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.billboard_list2_body_ul span:nth-of-type(3) {
+    display: inline-block;
+    width: 117px;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+    text-overflow: ellipsis;
+}
+
+.billboard_list2_body_ul span:nth-of-type(3) span {
+    color: rgb(153, 153, 153);
+    font-size: 12px;
+    margin-left: 3px;
+    vertical-align: baseline;
+}
+
+.billboard_list2_body_ul span:nth-of-type(4) {
+    width: 55px;
+    text-align: right;
+    vertical-align: middle;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    float: right;
+    color: rgb(153, 153, 153);
+}
+
+.choice {
+    background-color: rgb(227, 227, 229) !important;
+}
+.rankImg{
+    background-position-x: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 10px;
+    background-image: url("../../../../../../static/images/rank.png");
+}

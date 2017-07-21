@@ -43,26 +43,26 @@ class Header extends Component {
   render() {
     return (
         <div className="Header">
-          <img src={softImg} className="softImg"/>
+          <img src={softImg} className="softImg" alt="云音乐"/>
           <div className="button inline">
             <div className="inline">
-              <img src={arrl}/>
+              <img src={arrl} alt="arr-left"/>
             </div>
             <div className="inline">
-              <img src={arrr}/>
+              <img src={arrr} alt="arr-right"/>
             </div>
           </div>
           <div className="search inline">
             <input type="text" placeholder={this.state.showPla ? '搜索音乐，歌手，歌词，用户' : ''} id="search"/>
             <button></button>
           </div>
-          <div className="userInfo inline">
-            <img src={userImg}/>
-            <span className="userName">享受音乐
+          <div className="system inline">
+            <div className="userInfo inline">
+              <img src={userImg} alt="用户头像"/>
+              <span className="userName">flyer_H
                <div className="userChoice inline"> </div>
             </span>
-          </div>
-          <div className="system inline">
+            </div>
             <button className="skin"> </button>
             <button className="email"> </button>
             <button className="settings"> </button>

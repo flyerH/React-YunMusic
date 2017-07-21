@@ -1,70 +1,19 @@
-.FindMusic {
-    background-color: rgb(250, 250, 250);
-    height: 100%;
-    padding: 13px 30px 0 30px;
-}
 
-.FindMusic_header {
-    display: flex;
-    justify-content: center;
-    font-size: 14px;
-    border-bottom: 1px solid rgb(225, 225, 226);
-}
-
-.FindMusic_header ul {
-    width: 505px;
-    height: 100%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.FindMusic_header ul li {
-    width: 56px;
-    height: 28px;
-    display: inline-block;
-    margin-bottom: -1px;
-    cursor: pointer;
-    text-align: center;
-}
-
-.FindMusic_header ul li:hover {
-    color: rgb(198, 47, 47);
-}
-
-.FindMusic_header ul li:nth-child(4) {
-    color: rgb(198, 47, 47);
-    border-bottom: 2px solid rgb(198, 47, 47);
-}
-
-.billboard {
-    margin-top: 30px;
-}
-
-.billboard_title {
-    font-size: 18px;
-    font-family: "微软雅黑 Light";
-    margin-top: 30px;
-    padding: 0 0 10px 0;
-    border-bottom: 1px solid rgb(225, 225, 226);
-}
-
-.billboard_list {
-    display: flex;
-    justify-content: space-between;
-
-}
-
-.billboard_list > div {
-    display: inline-block;
-    border: 1px solid rgb(237, 237, 237);
-    width: 244px;
-    box-sizing: border-box;
-}
 
 .billboard_list_title {
     height: 90px;
     background: linear-gradient(to right, rgb(61, 142, 222), rgb(88, 162, 229) 1%, rgb(76, 143, 226), rgb(91, 142, 233));
     position: relative;
+    cursor: pointer;
+}
+
+.updateTime {
+    color: white;
+    opacity: 0.4;
+    font-size: 12px;
+    position: absolute;
+    left: 75px;
+    bottom: 20px;
 }
 
 .billboard_list_title1_img {
@@ -154,7 +103,7 @@
     color: rgb(153, 153, 153);
 }
 
-.New {
+.Soar {
     width: 32%;
 }
 
@@ -162,36 +111,17 @@
     background-color: rgb(227, 227, 229) !important;
 }
 
-.billboard {
-    margin-top: 27px;
+.billboard_list_footer{
+    background-color: rgb(245,245,247);
+    font-size: 12px;
+    padding: 13px;
+    text-align: right;
 }
-
-.billboard_title {
-    font-size: 18px;
-    font-family: "微软雅黑 Light";
-    margin-top: 0;
-    margin-left: 1px;
-    padding: 0 0 7px 0;
-    border-bottom: 1px solid rgb(225, 225, 226);
+.billboard_list_footer span{
+    font-family: 新宋体;
+    cursor: pointer;
+    color: rgb(136,136,136);
 }
-
-.billboard_list {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.billboard_list > div,.billboard_list2>div {
-    display: inline-block;
-    border: 1px solid rgb(237, 237, 237);
-    width: 244px;
-    box-sizing: border-box;
-}
-
-.billboard_list2 {
-    margin-bottom: 20px;
-}
-.billboard_list2 >div:nth-of-type(1){
-    margin-right: 12px;
+.billboard_list_footer span:hover{
+    color: rgb(102,102,102);
 }

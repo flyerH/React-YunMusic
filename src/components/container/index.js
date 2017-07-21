@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './index.css';
 import Header from '../header';
 import SideBar from '../body/sidebar';
+import Footer from '../footer';
 import FindMusic from '../body/main/findmusic';
 import PersonalFM from '../body/main/personalfm';
 
@@ -41,6 +42,7 @@ class Container extends Component {
             <FindMusic choice={isFindMusic}/>
             <PersonalFM choice={isPersonalFM}/>
           </div>
+          <Footer />
         </div>
     );
   }

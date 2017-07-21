@@ -1,0 +1,65 @@
+.Footer{
+    background-color: rgb(246,246,248);
+    border-top: 1px solid rgb(225,225,226);
+    height: 49px;
+}
+
+.footerButton{
+    width: 142px;
+    height: 100%;
+    display: inline-flex;
+    vertical-align: middle;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 30px;
+}
+.footerButton div{
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+.footerButton div:hover{
+    background-color: rgb(209,49,49);
+}
+.prePlay,.startPlay{
+    background-color: rgb(232,60,60);
+    border-radius: 50%;
+}
+.prePlay{
+    width: 30px;
+    height: 30px;
+}
+.startPlay{
+    width: 34px;
+    height: 34px;
+}
+.progressBar{
+    width: 523px;
+    height: 49px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    vertical-align: middle;
+    margin-left: 30px;
+    font-size: 12px;
+}
+.progressBarBody{
+    display: inline-block;
+    vertical-align: middle;
+    width: 439px;
+    height: 4px;
+    border-radius: 20px;
+    background-color: rgb(194,194,196);
+    margin-left: 14px;
+    margin-right: 10px;
+}
+.progressBarBody div{
+    width: 50%;
+    height: 100%;
+    border-radius: 20px;
+    font-size: 0;
+    background-color: rgb(232,60,60);
+}
+audio{
+    display: block;
+}
