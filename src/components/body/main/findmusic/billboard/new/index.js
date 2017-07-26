@@ -82,7 +82,6 @@ class New extends Component {
                       alias = "(" + transNames + ")";
                     else if (alias.length)
                       alias = "(" + alias + ")";
-
                     let lastRank = new_arr.tracks[index].lastRank;
                     let getRankPosition = '';
                     if (lastRank !== undefined) {

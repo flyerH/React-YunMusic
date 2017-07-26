@@ -40,6 +40,14 @@ class Header extends Component {
       })
   }
 
+  searchSong(event){
+    let inputValue=event.currentTarget.value;
+    if (event.keyCode===13&&inputValue!=='') {
+      this.props.changeIndex('-1');
+      this.props.getInput(inputValue);
+    }
+  }
+
   render() {
     return (
         <div className="Header">
@@ -53,7 +61,7 @@ class Header extends Component {
             </div>
           </div>
           <div className="search inline">
-            <input type="text" placeholder={this.state.showPla ? '搜索音乐，歌手，歌词，用户' : ''} id="search"/>
+            <input type="text" placeholder={this.state.showPla ? '搜索音乐，歌手，歌词，用户' : ''} id="search" onKeyDown={this.searchSong.bind(this)}/>
             <button></button>
           </div>
           <div className="system inline">

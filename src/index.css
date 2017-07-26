@@ -3,9 +3,12 @@ html, body {
 }
 
 body {
-    font-family: Arial,'新宋体',sans-serif;
+    font-family: Arial,NSimsun,sans-serif;
     margin: 0;
     padding: 0;
+    -webkit-user-select:none;/* and add the CSS class here instead */
+    -ms-user-select:none;
+    user-select:none;/**禁止选中文字*/
 }
 
 .main{

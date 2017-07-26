@@ -53,12 +53,68 @@
     margin-left: 14px;
     margin-right: 10px;
 }
-.progressBarBody div{
-    width: 50%;
+.progressBarBody>div{
+    width: 0;
     height: 100%;
     border-radius: 20px;
-    font-size: 0;
     background-color: rgb(232,60,60);
+    position: relative;
+}
+.progressBarCircle{
+    top: -7px;
+    right: -7px;
+    font-size: 0;
+    line-height: 16px;
+    position: absolute;
+    cursor: pointer;
+}
+.progressBarCircle img{
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+}
+.volume{
+    display: inline-flex;
+    vertical-align: middle;
+    align-items: center;
+    width: 124px;
+    height: 49px;
+    margin-left: 20px;
+}
+.volumeButton{
+    opacity: 0.6;
+    cursor: pointer;
+}
+.volumeButton:hover{
+    opacity: 1;
+}
+.volumeBody{
+    position: relative;
+    width: 100px;
+    height: 4px;
+    border-radius: 20px;
+    margin-left: 5px;
+    background-color: rgb(230,230,232);
+}
+.volumeBody>div{
+    width: 0;
+    height: 100%;
+    position: absolute;
+    border-radius: 20px;
+    background-color: rgb(232,60,60);
+}
+
+.volumeCircle{
+    top: -6px;
+    right: -9px;
+    font-size: 0;
+    position: absolute;
+    cursor: pointer;
+}
+.volumeCircle img{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
 }
 audio{
     display: block;

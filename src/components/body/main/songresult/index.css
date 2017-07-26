@@ -1,0 +1,130 @@
+.SongResult {
+    background-color: rgb(250, 250, 250);
+    height: 100%;
+}
+
+.SongResult table {
+    border-collapse: collapse;
+    font-size: 12px;
+    width: 100%;
+    cursor: default;
+    table-layout: fixed;
+
+}
+.SongResult table tr td{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.SongResult table tr:nth-child(even){
+    background-color: rgb(245,245,247);
+}
+.SongResult table tr th:nth-child(1) {
+    width: 52px;
+}
+
+.SongResult table tr th:nth-child(2) {
+    width: 59px;
+}
+
+.SongResult table tr th:nth-child(3) {
+    width: 223px;
+}
+
+.SongResult table tr th:nth-child(4) {
+    width: 122px;
+}
+
+.SongResult table tr th:nth-child(5) {
+    width: 158px;
+}
+
+.SongResult table tr th:nth-child(6) {
+    width: 73px;
+}
+
+.tableHead {
+    height: 30px;
+    text-align: left;
+}
+
+.tableHead th {
+    border: 1px solid rgb(225, 225, 226);
+    color: rgb(102, 102, 102);
+    font-weight: normal;
+    padding-left: 10px;
+    box-sizing: border-box;
+}
+
+.tableHead th:first-of-type {
+    border-left: none;
+}
+
+.tableHead th:last-of-type {
+    border-right: none;
+}
+.SongResult table tr td{
+    box-sizing: border-box;
+    padding: 6px 0;
+}
+.SongResult table tr td:first-child {
+    text-align: right;
+    padding-right: 10px;
+    color: rgb(153,153,153);
+    font-family: "Microsoft YaHei";
+}
+.SongResult table tr td:nth-child(4),.SongResult table tr td:nth-child(5){
+    color: rgb(102,102,102);
+}
+.SongResult table tr td:nth-child(6){
+    color: rgb(153,153,153);
+    font-family: "Microsoft YaHei";
+}
+.SongResult table tr td:nth-child(n+2) {
+    text-align: left;
+    padding-left: 10px;
+}
+.SongResult table tbody tr:hover {
+    background-color: rgb(235, 236, 237);
+}
+.SongResultHotBg{
+   display: inline-block;
+    width: 82px;
+    height: 6px;
+    border-radius: 20px;
+    background-color: rgb(224,224,224);
+}
+.SongResultHotBg div{
+    font-size: 0;
+    width: 0;
+    height: 100%;
+    border-radius: 20px;
+    background-color: rgb(202,202,202);
+}
+.SongResultOperate div{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background-image: url("../../../../static/images/sidebar.png");
+    opacity: 0.2;
+    cursor: pointer;
+}
+.SongResultOperate div:first-child{
+    background-position: -14px -351px;
+}
+.SongResultOperate div:last-child{
+    background-position: -14px -185px;
+    margin-left: 6px;
+}
+.SongResultChoice {
+    background-color: rgb(227, 227, 229) !important;
+}
+.fontColorBlack{
+    color: black !important;
+}
+.hotBgColorFocus{
+    background-color: rgb(195,195,196) !important;
+}
+.hotColorFocus{
+    background-color: rgb(167,167,168) !important;
+}
