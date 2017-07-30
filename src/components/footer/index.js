@@ -19,7 +19,7 @@ class Footer extends Component {
       isPlay: false,
       currentTime: "00:00",
       audioTime: "00:00",
-      progressBarLength: 0,
+      progressLength: 0,
       volumeLength: 0,
       circleShowStatus: "hidden",
       downFlag: false
@@ -53,6 +53,10 @@ class Footer extends Component {
   getTime(time) {
     let minute = Math.floor(time / 60 % 60);
     let second = Math.floor(time % 60);
+    if (second === 60) {
+      ++minute;
+      second = 0;
+    }
     if (minute < 10) {
       minute = "0" + minute;
     }
@@ -78,22 +82,77 @@ class Footer extends Component {
       length = Math.floor(tempTime / audioLength * 1000) / 1000 * progressBarBodyLength;
       this.setState({
         currentTime: time,
-        progressBarLength: length
+        progressLength: length
       })
     }, 500)
   }
 
-  clickVolumeBody(event) {
-    const volumeBodyLength = event.currentTarget.offsetLeft;
-    const volumeWidth = this.state.volumeWidth;
-    let absoluteVolumeLength = event.clientX - volumeBodyLength + 3;
+  clickBarBody(type, event) {
+    console.log(event.currentTarget)
+    const barBodyLength = event.currentTarget.offsetLeft;
+    let barWidth = this.state.progressWidth;
+    if (type === "volume")
+      barWidth = this.state.volumeWidth;
+    let absoluteBarLength = event.clientX - barBodyLength + 3;
 
-    if (absoluteVolumeLength > volumeWidth)
-      absoluteVolumeLength = volumeWidth;
-    this.changeVolume(absoluteVolumeLength);
-    this.setState({
-      volumeLength: absoluteVolumeLength
-    });
+    if (absoluteBarLength > barWidth)
+      absoluteBarLength = barWidth;
+    if (type === "progress") {
+      this.changePlayTime(absoluteBarLength);
+      this.setState({
+        progressLength: absoluteBarLength
+      });
+    }
+    else {
+      this.changeVolume(absoluteBarLength);
+      this.setState({
+        volumeLength: absoluteBarLength
+      });
+    }
+  }
+
+  changePlayTime(newTime) {
+    const audio = document.getElementById("audio");
+    const duration = audio.duration;
+    newTime *= duration;
+    const progressWidth = this.state.progressWidth;
+    if (newTime / progressWidth < 0)
+      audio.currentTime = 0;
+    else if (newTime / progressWidth <= duration)
+      audio.currentTime = newTime / progressWidth;
+    else
+      audio.currentTime = duration;
+
+  }
+
+  downProgressButton(event) {
+    const progressWidth = this.state.progressWidth;
+    const distanceX = event.clientX - this.state.progressLength;
+    document.onmousemove = (event) => {
+      let tempLength = event.clientX - distanceX;
+      this.changePlayTime(tempLength);
+      if (tempLength <= progressWidth) {
+        if (tempLength >= 0) {
+          this.setState({
+            progressLength: tempLength
+          })
+        }
+        else {
+          this.setState({
+            progressLength: 0
+          })
+        }
+      }
+      else {
+        this.setState({
+          progressLength: this.state.progressLength
+        })
+      }
+    };
+    document.onmouseup = () => {
+      document.onmousemove = null;
+      document.onmouseup = null;
+    };
   }
 
   changeVolume(newVolume) {
@@ -108,7 +167,23 @@ class Footer extends Component {
       audio.volume = 1;
   }
 
-  downVolumeButton(event) {
+  clickVolumeButton(){
+    const audio = document.getElementById("audio");
+    if (audio.volume!==0){
+      audio.volume=0;
+      this.setState({
+        volumeLength:0
+      })
+    }
+    else{
+      audio.volume=1;
+      this.setState({
+        volumeLength:this.state.volumeWidth
+      })
+    }
+  }
+
+  downVolumeCircle(event) {
     //音量条最长的长度
     const volumeWidth = this.state.volumeWidth;
     //这里是音量条最左侧到屏幕最左侧之间的距离
@@ -162,7 +237,7 @@ class Footer extends Component {
   }
 
   getSongURL(songID) {
-    fetch('http://localhost:4000/music/url?id=' + songID, {
+    fetch('/music/url?id=' + songID, {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -170,52 +245,62 @@ class Footer extends Component {
       this.setState({
         songURL: data.data[0].url,
       });
-      console.log(data.data[0].url)
       this.changeStatus();
     }).catch(err => console.log(err));
   }
 
   componentDidMount() {
     const volumeBody = document.getElementsByClassName("volumeBody")[0].offsetWidth;
+    const progressBody = document.getElementsByClassName("progressBarBody")[0].offsetWidth;
     this.setState({
+      progressWidth: progressBody,
       volumeWidth: volumeBody,
       volumeLength: volumeBody
     });
   }
 
-  componentWillReceiveProps() {
-    this.getSongURL(this.props.songID);
+
+  componentWillReceiveProps(nextProps) {
+    let songID = parseInt(nextProps.songID, 10);
+    if (nextProps.songID !== -1) {
+      if (parseInt(this.props.songID, 10) !== nextProps.songID) {
+        console.log("songID: " + songID)
+        this.getSongURL(songID);
+      }
+    }
   }
 
   render() {
     let playStatus = this.state.isPlay ? pause : play;
 
     return (
-        <div className="Footer">
+        <div className={this.props.isMinimize?"displayNone":"Footer"}>
           <div className="footerButton">
             <div className="prePlay"><img src={prePlay} alt="上一首"/></div>
             <div className="startPlay" onClick={this.changeStatus.bind(this)}><img src={playStatus} alt="播放/暂停"/></div>
             <div className="prePlay"><img src={nextPlay} alt="下一首"/></div>
           </div>
           <div className="progressBar">
-            <span className="currentTime">{this.state.currentTime}</span>
-            <div id="progressBarBody" className="progressBarBody">
-              <div style={{width: this.state.progressBarLength + 'px'}}>
-                <div className="progressBarCircle">
-                  <img src={progressBarCircle} alt="拖动进度条"/>
+            <span>{this.state.currentTime}</span>
+            <div id="progressBarBody" className="progressBarBody" onClick={this.clickBarBody.bind(this, "progress")}>
+              <div style={{width: this.state.progressLength + 'px'}}>
+                <div className="progressBarCircle" onMouseDown={this.downProgressButton.bind(this)}>
+                  <img onMouseDown={(e) => {
+                    e.preventDefault()
+                  }} src={progressBarCircle} alt="拖动进度条"/>
                 </div>
               </div>
             </div>
             <span>{this.state.audioTime}</span>
           </div>
           <div className="volume">
-            <img className="volumeButton" src={this.state.volumeLength === 0 ? muteButton : volumeButton} alt="音量按钮"/>
-            <div className="volumeBody" onClick={this.clickVolumeBody.bind(this)}
+            <img className="volumeButton" src={this.state.volumeLength === 0 ? muteButton : volumeButton} alt="音量按钮" onClick={this.clickVolumeButton.bind(this)}/>
+            <div className="volumeBody" onClick={this.clickBarBody.bind(this, "volume")}
                  onMouseOver={this.showVolumeCircle.bind(this)}
                  onMouseOut={this.hiddenVolumeCircle.bind(this)}
             >
               <div style={{width: this.state.volumeLength + 'px'}}>
-                <div className="volumeCircle" onMouseDown={this.downVolumeButton.bind(this)}
+                <div className="volumeCircle" onMouseDown={this.downVolumeCircle.bind(this)}
                      style={{visibility: this.state.circleShowStatus}}
                 >
                   <img onMouseDown={(e) => {
@@ -225,8 +310,9 @@ class Footer extends Component {
               </div>
             </div>
           </div>
-          <audio id="audio" controls="controls"
-                 src={this.state.songURL} onCanPlay={this.currentTime.bind(this)} onEnded={this.playEnded.bind(this)}>您的浏览器不支持HTML5 Audio标签</audio>
+          <audio id="audio" src={this.state.songURL} onCanPlay={this.currentTime.bind(this)}
+                 onEnded={this.playEnded.bind(this)}>您的浏览器不支持HTML5 Audio标签
+          </audio>
         </div>
     )
   }

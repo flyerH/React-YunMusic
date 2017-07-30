@@ -2,6 +2,7 @@
     width: 1023px;
     height: 670px;
     background-color: rgb(250, 250, 250);
+    z-index: 10;
 }
 
 .tabs {
@@ -20,4 +21,37 @@
 .tabs::-webkit-scrollbar-thumb {
     background: rgb(225,225,226);
     border-radius: 50px;
+}
+
+@keyframes minimize {
+    0%   {opacity: 1}
+    25%  {
+        opacity: 0.75;
+        transform: scale(0.75);
+        margin-top: 25%;
+        margin-right: 25%;
+    }
+    50%  {
+        transform: scale(0.5);
+        margin-top: 50%;
+        margin-right: 50%;
+    }
+    75%  {
+        transform: scale(0.25);
+        margin-top: 75%;
+        margin-right: 75%;
+    }
+    100% {
+        margin-top: 80%;
+        margin-right: 90%;
+    }
+}
+.ContainerMinimize{
+    width: 200px;
+    height: 35px;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    border-radius: 5px 5px 0 0;
 }

@@ -11,10 +11,13 @@ class Container extends Component {
   constructor() {
     super();
     this.state = {
-      currentIndex: '-1',
+      currentIndex: '0',
       inputValue: '',
       songResultData: [],
-      isLoading: false
+      isLoading: false,
+      songID: -1,
+      isMinimize:false,
+      showMinimize:false
     }
   }
 
@@ -30,7 +33,7 @@ class Container extends Component {
   }
 
   getSongResult(inputValue) {
-    fetch('http://localhost:4000/search?keywords=' + inputValue, {
+    fetch('/search?keywords=' + inputValue, {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -38,7 +41,7 @@ class Container extends Component {
       let songCount = data.result.songCount;
       if (songCount > 100)
         songCount = 100;
-      fetch('http://localhost:4000/search?keywords=' + inputValue + '&limit=' + songCount, {
+      fetch('/search?keywords=' + inputValue + '&limit=' + songCount, {
         method: 'GET',
       }).then(res => {
         return res.json()
@@ -51,11 +54,27 @@ class Container extends Component {
     })
   }
 
-  getSongID(id){
+  getSongID(id) {
     this.setState({
-      songID:id
+          songID: id
         }
     )
+  }
+
+  setMinimize(status){
+    const github=document.getElementsByClassName("GitHubBody")[0];
+    if(status==="min") {
+      github.style.display="block";
+      this.setState({
+        isMinimize: true
+      })
+    }
+    if(status==="max") {
+      github.style.display="none";
+      this.setState({
+        isMinimize:false
+      })
+    }
   }
 
   componentWillMount() {
@@ -73,16 +92,16 @@ class Container extends Component {
     let isFindMusic = this.state.currentIndex === '0' ? 'block' : 'none';
     let isPersonalFM = this.state.currentIndex === '1' ? 'block' : 'none';
     return (
-        <div className="Container">
-          <Header getInput={this.getInput.bind(this)} changeIndex={this.changeIndex.bind(this)}/>
-          <SideBar currentIndex={this.state.currentIndex} changeIndex={this.changeIndex.bind(this)}/>
-          <div className="tabs">
+        <div id="Container" className={this.state.isMinimize?"ContainerMinimize":"Container"}>
+          <Header isMinimize={this.state.isMinimize} setMinimize={this.setMinimize.bind(this)} getInput={this.getInput.bind(this)} changeIndex={this.changeIndex.bind(this)}/>
+          <SideBar isMinimize={this.state.isMinimize} currentIndex={this.state.currentIndex} changeIndex={this.changeIndex.bind(this)}/>
+          <div className={this.state.isMinimize?"displayNone":"tabs"}>
             <SongResult songResultData={this.state.songResultData} isLoading={this.state.isLoading}
                         getSongID={this.getSongID.bind(this)} choice={isSongResult}/>
             <FindMusic choice={isFindMusic}/>
             <PersonalFM choice={isPersonalFM}/>
           </div>
-          <Footer songID={this.state.songID}/>
+          <Footer  isMinimize={this.state.isMinimize} songID={this.state.songID}/>
         </div>
     );
   }

@@ -9,6 +9,7 @@ body {
     -webkit-user-select:none;/* and add the CSS class here instead */
     -ms-user-select:none;
     user-select:none;/**禁止选中文字*/
+    background-color: rgb(234,234,234);
 }
 
 .main{
@@ -19,7 +20,6 @@ body {
     height: 100%;
     min-width: 1023px;
     min-height: 670px;
-    background-color: pink;
 }
 #root{
     width: 100%;

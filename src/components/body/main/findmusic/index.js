@@ -23,7 +23,7 @@ class FindMusic extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:4000/top/list?idx=3', {
+    fetch('/top/list?idx=3', {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -33,7 +33,7 @@ class FindMusic extends Component {
       });
     }).catch(err => console.log(err));
 
-    fetch('http://localhost:4000/top/list?idx=0', {
+    fetch('/top/list?idx=0', {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -43,7 +43,7 @@ class FindMusic extends Component {
       });
     }).catch(err => console.log(err));
 
-    fetch('http://localhost:4000/top/list?idx=2', {
+    fetch('/top/list?idx=2', {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -53,7 +53,7 @@ class FindMusic extends Component {
       });
     }).catch(err => console.log(err));
 
-    fetch('http://localhost:4000/top/list?idx=1', {
+    fetch('/top/list?idx=1', {
       method: 'GET',
     }).then(res => {
       return res.json()
@@ -63,7 +63,7 @@ class FindMusic extends Component {
       });
     }).catch(err => console.log(err));
 
-    fetch('http://localhost:4000/toplist/artist', {
+    fetch('/toplist/artist', {
       method: 'GET',
     }).then(res => {
       return res.json()

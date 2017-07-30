@@ -6,6 +6,7 @@
     "email": "h@strawtc.cn"
   },
   "license": "MPL-2.0",
+  "homepage": "https://github.com/flyerH/React-YunMusic",
   "keywords": [
     "react",
     "仿网易云音乐",
@@ -25,5 +26,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "proxy": "http://localhost:4000/"
 }

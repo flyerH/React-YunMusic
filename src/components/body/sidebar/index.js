@@ -11,14 +11,13 @@ class Sidebar extends Component {
     let tempIndex = event.currentTarget.getAttribute("data-index")
     let currentIndex = this.props.currentIndex;
     if (currentIndex !== tempIndex) {
-      console.log(tempIndex);
       this.props.changeIndex(tempIndex);
     }
   }
 
   render() {
     return (
-        <div className="Sidebar inline">
+        <div className={this.props.isMinimize?"displayNone":"Sidebar inline"}>
           <ul className="title">
             <li>
               <p>推荐</p>

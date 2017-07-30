@@ -13,10 +13,12 @@
     vertical-align: middle;
     height: 26px;
     margin-left: 75px;
+    cursor: pointer;
 }
 
 button {
     cursor: pointer;
+    font-size: 0;
 }
 
 .button div {
@@ -54,8 +56,9 @@ button {
     border: none;
     width: 207px;
     height: 10px;
-    padding: 6px 0 5px 8px;
-    font-size: 16px;
+    padding: 6px 0 6px 8px;
+    font-size: 13px;
+    font-family: Arial,NSimsun,sans-serif;
     background-color: rgb(168, 40, 40);
     color: white;
     outline: none;
@@ -66,6 +69,7 @@ button {
     color: rgb(199, 115, 115);
     letter-spacing: -1px;
     font-size: 13px;
+    vertical-align: middle;
 }
 
 .search input:-moz-placeholder {
@@ -99,7 +103,7 @@ button {
     background-size: 13px;
     background-repeat: no-repeat;
     position: absolute;
-    top: 17px;
+    top: 19px;
     right: 4px;
     opacity: 0.5;
     cursor: pointer;
@@ -193,7 +197,6 @@ button {
     border-color: transparent transparent transparent rgba(0, 0, 0, 0.15);
     vertical-align: middle;
 }
-
 .minimode {
     margin-left: 12px;
     background-position: 0 0;
@@ -202,6 +205,7 @@ button {
 .minimize {
     margin-left: 3px;
     background-position: -25px 0;
+    position: relative;
 }
 .maximize{
     margin-left: 3px;
@@ -211,3 +215,40 @@ button {
     margin-left: 4px;
     background-position: -75px 0;
 }
+
+.point {
+    position: absolute;
+    top: -61px;
+    right: -120px;
+    text-align: center;
+}
+.pointContainer{
+    position: relative;
+}
+.pointArrow {
+    display: inline-block;
+    transform: rotate(45deg);
+    width: 13px;
+    height: 13px;
+    border-width: 0 1px 1px 0;
+    border-color: red;
+    border-style: dashed;
+    background-color: transparent;
+    position: absolute;
+    top: 25px;
+    left: 25px;
+}
+.pointBody{
+    display: inline-block;
+    width:170px;
+    height:30px;
+    line-height: 30px;
+    margin-left:-6px;
+    border-radius:200px/100px;
+    border:1px dashed red;
+    font-size:13px;
+    box-sizing: border-box;
+}
+.displayNone{
+     display: none;
+ }
