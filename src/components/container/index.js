@@ -11,13 +11,15 @@ class Container extends Component {
   constructor() {
     super();
     this.state = {
-      currentIndex: '0',
+      currentIndex: '1',
       inputValue: '',
       songResultData: [],
       isLoading: false,
       songID: -1,
       isMinimize:false,
-      showMinimize:false
+      showMinimize:false,
+      currentTime:0,
+      isPlay:false
     }
   }
 
@@ -87,6 +89,23 @@ class Container extends Component {
     });
   }
 
+  getCurrentTime(time){
+      this.setState({
+        currentTime:time
+      })
+  }
+
+  isPlay(flag){
+    this.setState({
+      isPlay:flag
+    })
+  }
+
+  nextSong(){
+    if(this.state.currentIndex==='1')
+      this.refs.PersonalFM.nextSong();
+  }
+
   render() {
     let isSongResult = this.state.currentIndex === '-1' ? 'block' : 'none';
     let isFindMusic = this.state.currentIndex === '0' ? 'block' : 'none';
@@ -98,10 +117,10 @@ class Container extends Component {
           <div className={this.state.isMinimize?"displayNone":"tabs"}>
             <SongResult songResultData={this.state.songResultData} isLoading={this.state.isLoading}
                         getSongID={this.getSongID.bind(this)} choice={isSongResult}/>
-            <FindMusic choice={isFindMusic}/>
-            <PersonalFM choice={isPersonalFM}/>
+            <FindMusic choice={isFindMusic} getSongID={this.getSongID.bind(this)}/>
+            <PersonalFM ref="PersonalFM" isPlay={this.state.isPlay} choice={isPersonalFM} currentTime={this.state.currentTime} getSongID={this.getSongID.bind(this)}/>
           </div>
-          <Footer  isMinimize={this.state.isMinimize} songID={this.state.songID}/>
+          <Footer nextSong={this.nextSong.bind(this)} currentIndex={this.state.currentIndex} isPlay={this.isPlay.bind(this)} getCurrentTime={this.getCurrentTime.bind(this)}  isMinimize={this.state.isMinimize} songID={this.state.songID}/>
         </div>
     );
   }

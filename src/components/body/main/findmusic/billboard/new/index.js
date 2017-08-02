@@ -54,6 +54,10 @@ class New extends Component {
       return '-11'
   }
 
+  getSongID(id) {
+    this.props.getSongID(id);
+  }
+
   render() {
     const new_arr = this.props.new_arr;
     const getupdateTime = this.getupdateTime();
@@ -83,6 +87,7 @@ class New extends Component {
                     else if (alias.length)
                       alias = "(" + alias + ")";
                     let lastRank = new_arr.tracks[index].lastRank;
+                    let songID = new_arr.tracks[index].id;
                     let getRankPosition = '';
                     if (lastRank !== undefined) {
                       getRankPosition = this.getRank(index, new_arr.tracks[index].lastRank);
@@ -91,7 +96,7 @@ class New extends Component {
                       getRankPosition = '-44';
                     return (
                         <li key={index} data-index={index}
-                            className={this.state.tempIndex === index ? 'choice' : ''}>
+                            className={this.state.tempIndex === index ? 'choice' : ''} onDoubleClick={this.getSongID.bind(this, songID)}>
                           <span>{index + 1}</span>
                           <span className="rankImg" style={{backgroundPositionY: getRankPosition + 'px'}}> </span>
                           <span>{new_arr.tracks[index].name}<span>{alias}</span></span>

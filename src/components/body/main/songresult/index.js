@@ -76,7 +76,8 @@ class SongResult extends Component {
             </thead>
             {
               (() => {
-                if (this.props.isLoading&&count>0)
+                if (this.props.isLoading )
+                  if(count>0)
                 //if(false)
                   return (
                       <tbody onClick={this.clickList.bind(this)}>
@@ -121,7 +122,11 @@ class SongResult extends Component {
                       </tbody>
                   )
                 else
-                  return <tbody><tr><td className="songNotFound" colSpan="7">很抱歉，未能找到相关歌曲</td></tr></tbody>;
+                  return <tbody>
+                  <tr>
+                    <td className="songNotFound" colSpan="7">很抱歉，未能找到相关单曲。</td>
+                  </tr>
+                  </tbody>;
               })()
             }
           </table>

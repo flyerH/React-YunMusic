@@ -46,6 +46,10 @@ class Soar extends Component {
     return formatTime;
   }
 
+  getSongID(id) {
+    this.props.getSongID(id);
+  }
+
   render() {
     const soar_arr = this.props.soar_arr;
     const getupdateTime = this.getupdateTime();
@@ -69,6 +73,7 @@ class Soar extends Component {
                     });
                     artists = artists.join('/');
                     let alias = soar_arr.tracks[index].alias;
+                    let songID = soar_arr.tracks[index].id;
                     let transNames = soar_arr.tracks[index].transNames;
                     if (transNames !== undefined)
                       alias = "(" + transNames + ")";
@@ -76,7 +81,7 @@ class Soar extends Component {
                       alias = "(" + alias + ")";
                     return (
                         <li key={index} data-index={index}
-                            className={this.state.tempIndex === index ? 'choice' : ''}>
+                            className={this.state.tempIndex === index ? 'choice' : ''} onDoubleClick={this.getSongID.bind(this, songID)}>
                           <span>{index + 1}</span>
                           <span> {soar_arr.tracks[index].ratio}%</span>
                           <span>{soar_arr.tracks[index].name}<span>{alias}</span></span>

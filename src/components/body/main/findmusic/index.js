@@ -56,8 +56,10 @@ class FindMusic extends Component {
     fetch('/top/list?idx=1', {
       method: 'GET',
     }).then(res => {
+      console.log("res1");
       return res.json()
     }).then((data) => {
+      console.log("data1");
       this.setState({
         hotsongData: data.result,
       });
@@ -73,6 +75,10 @@ class FindMusic extends Component {
       });
     }).catch(err => console.log(err));
 
+  }
+
+  getSongID(id) {
+    this.props.getSongID(id);
   }
 
   render() {
@@ -97,15 +103,15 @@ class FindMusic extends Component {
           <div className="billboard">
             <p className="billboard_title">官方榜</p>
             <div className="billboard_list">
-              <Soar soar_arr={soar_arr}/>
+              <Soar soar_arr={soar_arr} getSongID={this.getSongID.bind(this)}/>
               <New new_arr={new_arr} newsong_img={require('../../../../static/images/newsong.png')}
-                   titleBgColor={'billboard_list2_title_bg1'}/>
+                   titleBgColor={'billboard_list2_title_bg1'} getSongID={this.getSongID.bind(this)}/>
               <New new_arr={origin_arr} newsong_img={require('../../../../static/images/origin.png')}
-                   titleBgColor={'billboard_list2_title_bg2'}/>
+                   titleBgColor={'billboard_list2_title_bg2'} getSongID={this.getSongID.bind(this)}/>
             </div>
             <div className="billboard_list2">
               <New new_arr={hotsong_arr} newsong_img={require('../../../../static/images/hotsong.png')}
-                   titleBgColor={'billboard_list2_title_bg3'}/>
+                   titleBgColor={'billboard_list2_title_bg3'} getSongID={this.getSongID.bind(this)}/>
               <Singer singer_arr={singer_arr} singer_img={require('../../../../static/images/singer.png')}
                    titleBgColor={'billboard_list2_title_bg4'}/>
             </div>

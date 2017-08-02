@@ -29,17 +29,19 @@ class Footer extends Component {
   changeStatus() {
     const audio = document.getElementById("audio");
     clearInterval(this.times);
-    if (audio.paused) {
-      this.setState({
-        isPlay: true
-      });
-      audio.play();
-
-    } else {
-      this.setState({
-        isPlay: false
-      });
-      audio.pause();
+    if(audio.src) {
+      if (audio.paused) {
+        this.setState({
+          isPlay: true
+        });
+        audio.play();
+      } else {
+        this.setState({
+          isPlay: false
+        });
+        audio.pause();
+      }
+      this.props.isPlay(this.state.isPlay);
     }
   }
 
@@ -48,6 +50,7 @@ class Footer extends Component {
     this.setState({
       isPlay: false
     })
+    this.props.isPlay(this.state.isPlay);
   }
 
   getTime(time) {
@@ -67,17 +70,18 @@ class Footer extends Component {
   }
 
   currentTime() {
+    clearInterval(this.times);
     const audio = document.getElementById("audio");
-    const audioLength = Math.floor(audio.duration);
+    let audioLength = Math.floor(audio.duration);
     this.setState({
       audioTime: this.getTime(audioLength)
     });
-    console.log("duration: " + audio.duration)
 
-    const progressBarBodyLength = document.getElementById("progressBarBody").offsetWidth;
+    let progressBarBodyLength = document.getElementById("progressBarBody").offsetWidth;
     let length = 0;
     this.times = setInterval(() => {
       let tempTime = audio.currentTime;
+      this.props.getCurrentTime(Math.round(tempTime));
       let time = this.getTime(tempTime);
       length = Math.floor(tempTime / audioLength * 1000) / 1000 * progressBarBodyLength;
       this.setState({
@@ -88,7 +92,6 @@ class Footer extends Component {
   }
 
   clickBarBody(type, event) {
-    console.log(event.currentTarget)
     const barBodyLength = event.currentTarget.offsetLeft;
     let barWidth = this.state.progressWidth;
     if (type === "volume")
@@ -113,16 +116,17 @@ class Footer extends Component {
 
   changePlayTime(newTime) {
     const audio = document.getElementById("audio");
+    if(audio.readyState!==0) {
     const duration = audio.duration;
     newTime *= duration;
     const progressWidth = this.state.progressWidth;
-    if (newTime / progressWidth < 0)
-      audio.currentTime = 0;
-    else if (newTime / progressWidth <= duration)
-      audio.currentTime = newTime / progressWidth;
-    else
-      audio.currentTime = duration;
-
+      if (newTime / progressWidth < 0)
+        audio.currentTime = 0;
+      else if (newTime / progressWidth <= duration)
+        audio.currentTime = newTime / progressWidth;
+      else
+        audio.currentTime = duration;
+    }
   }
 
   downProgressButton(event) {
@@ -251,7 +255,7 @@ class Footer extends Component {
 
   componentDidMount() {
     const volumeBody = document.getElementsByClassName("volumeBody")[0].offsetWidth;
-    const progressBody = document.getElementsByClassName("progressBarBody")[0].offsetWidth;
+    const progressBody = document.getElementById("progressBarBody").offsetWidth;
     this.setState({
       progressWidth: progressBody,
       volumeWidth: volumeBody,
@@ -262,9 +266,8 @@ class Footer extends Component {
 
   componentWillReceiveProps(nextProps) {
     let songID = parseInt(nextProps.songID, 10);
-    if (nextProps.songID !== -1) {
-      if (parseInt(this.props.songID, 10) !== nextProps.songID) {
-        console.log("songID: " + songID)
+    if (songID !== -1) {
+      if (parseInt(this.props.songID, 10) !== songID) {
         this.getSongURL(songID);
       }
     }
@@ -276,9 +279,9 @@ class Footer extends Component {
     return (
         <div className={this.props.isMinimize?"displayNone":"Footer"}>
           <div className="footerButton">
-            <div className="prePlay"><img src={prePlay} alt="上一首"/></div>
+            <div className="prePlay" style={{display:this.props.currentIndex==='1'?"none":""}}><img src={prePlay} alt="上一首"/></div>
             <div className="startPlay" onClick={this.changeStatus.bind(this)}><img src={playStatus} alt="播放/暂停"/></div>
-            <div className="prePlay"><img src={nextPlay} alt="下一首"/></div>
+            <div className="prePlay" onClick={this.props.nextSong}><img src={nextPlay} alt="下一首"/></div>
           </div>
           <div className="progressBar">
             <span>{this.state.currentTime}</span>
