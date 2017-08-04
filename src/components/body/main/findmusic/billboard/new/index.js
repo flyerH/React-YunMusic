@@ -67,7 +67,7 @@ class New extends Component {
           <div className={"billboard_list2_title " + this.props.titleBgColor}>
             <img src={this.props.newsong_img} className="billboard_list2_title_img" alt="新歌榜"/>
             <span className="updateTime2">{getupdateTime}</span>
-            <img src={play} className="billboard_list2_play" alt="play_button"/>
+            <img src={play} className="billboard_list2_play" alt="play_button" onClick={()=>{this.getSongID(new_arr.tracks[0].id)}}/>
           </div>
           <div className="billboard_list2_body">
             <ul className="billboard_list2_body_ul" onClick={this.clickList.bind(this)}>

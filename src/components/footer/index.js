@@ -35,11 +35,13 @@ class Footer extends Component {
           isPlay: true
         });
         audio.play();
+        this.currentTime();
       } else {
         this.setState({
           isPlay: false
         });
         audio.pause();
+        clearInterval(this.times);
       }
       this.props.isPlay(this.state.isPlay);
     }
@@ -81,14 +83,14 @@ class Footer extends Component {
     let length = 0;
     this.times = setInterval(() => {
       let tempTime = audio.currentTime;
-      this.props.getCurrentTime(Math.round(tempTime));
+      this.props.getCurrentTime(tempTime.toFixed(1));
       let time = this.getTime(tempTime);
       length = Math.floor(tempTime / audioLength * 1000) / 1000 * progressBarBodyLength;
       this.setState({
         currentTime: time,
         progressLength: length
       })
-    }, 500)
+    }, 100)
   }
 
   clickBarBody(type, event) {

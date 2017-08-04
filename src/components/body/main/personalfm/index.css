@@ -43,6 +43,8 @@
 }
 .PersonalFMSongName{
     font-size: 24px;
+    font-weight: bold;
+    color: rgb(50,50,50);
     margin: 0;
 }
 .PersonalFMLyric{

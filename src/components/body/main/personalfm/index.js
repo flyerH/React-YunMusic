@@ -70,11 +70,13 @@ class PersonalFM extends Component {
                     }
                   ]
             }
-          ]
+          ],
+      lastNextSong:0
     }
   }
 
   getData() {
+    this.props.changePlayIndex(1)
     fetch('/personal_fm', {
       method: 'GET',
     }).then(res => {
@@ -90,23 +92,35 @@ class PersonalFM extends Component {
           singerName: this.state.tempData[this.state.currentIndex].artists[0].name,
           tempIndex:-1
         })
-        this.getLyric(this.state.tempData[this.state.currentIndex].id)
+        //this.getLyric(this.state.tempData[this.state.currentIndex].id)
       } else {
+        let album={"name":"未知","picUrl":""};
+        if(data.data[this.state.currentIndex].album!==undefined)
+          album=data.data[this.state.currentIndex].album;
         this.setState({
           currentIndex: 0,
           personalFMData: data.data,
-          imgSrc: data.data[this.state.currentIndex].album.picUrl,
+          imgSrc: album.picUrl,
           songName: data.data[this.state.currentIndex].name,
-          albumName: data.data[this.state.currentIndex].album.name,
+          albumName: album.name,
           singerName: data.data[this.state.currentIndex].artists[0].name,
           tempIndex:-1
         });
-        this.getLyric(data.data[this.state.currentIndex].id)
+        //this.getLyric(data.data[this.state.currentIndex].id)
       }
     }).catch(err => console.log(err));
   }
 
   nextSong() {
+    let nowTime=Date.now();
+    if(nowTime-this.state.lastNextSong<1000) {
+      console.log("切这么快，怕不是帕金森犯了 ( ´﹀` )礼貌的微笑");
+      return false;
+    }
+    else
+      this.setState({
+        lastNextSong:Date.now()
+      })
     let currentIndex = this.state.currentIndex;
     if (currentIndex === 2) {
       this.setState({
@@ -115,11 +129,14 @@ class PersonalFM extends Component {
       this.getData();
     } else {
       ++currentIndex;
+      let album={"name":"未知","picUrl":""};
+      if(this.state.personalFMData[currentIndex].album!==undefined)
+          album=this.state.personalFMData[currentIndex].album;
       this.setState({
         currentIndex: currentIndex,
-        imgSrc: this.state.personalFMData[currentIndex].album.picUrl,
+        imgSrc: album.picUrl,
         songName: this.state.personalFMData[currentIndex].name,
-        albumName: this.state.personalFMData[currentIndex].album.name,
+        albumName: album.name,
         singerName: this.state.personalFMData[currentIndex].artists[0].name,
         tempIndex:-1
       })
@@ -139,8 +156,10 @@ class PersonalFM extends Component {
         this.setState({
           noLyric:false
         })
-        this.analyseLyric(data.lrc.lyric.toString());
-        this.scrollLyric();
+        if(data.lrc.lyric!==undefined) {
+          this.analyseLyric(data.lrc.lyric.toString());
+          this.scrollLyric();
+        }
       }
       else
         this.setState({
@@ -164,8 +183,8 @@ class PersonalFM extends Component {
       for (let k = 0, h = timeRegExpArr.length; k < h; k++) {
         let t = timeRegExpArr[k];
         let min = Number(String(t.match(/\[\d*/i)).slice(1)),
-            sec = Number(String(t.match(/:\d*/i)).slice(1));
-        let time = min * 60 + sec;
+            sec = Number(String(t.match(/:\d*\.*\d?/i)).slice(1));
+        let time =(min * 60 + sec).toFixed(1);
         lrcObj[time] = i;
         lrcArr.push(clause);
         timeTemp.push(time)
@@ -222,18 +241,27 @@ class PersonalFM extends Component {
 
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    //if (this.props.propsIndex==='1')
     this.getData();
     //this.props.getSongID(432506345);
   }
 
   componentWillReceiveProps(nextProps) {
     let tempIndex = this.state.lyricObj[this.props.currentTime];
-    if (tempIndex !== undefined&&this.props.currentTime!==nextProps.currentTime) {
+    if (tempIndex !== undefined&&this.props.playIndex===1) {
       this.scrollLyric(tempIndex);
       this.setState({
         tempIndex: tempIndex
       })
+    }else if(this.props.playIndex!==nextProps.playIndex){
+      this.setState({
+        tempIndex:-1
+      })
+    }
+    if(this.props.propsIndex!==nextProps.propsIndex) {
+      if (nextProps.propsIndex === '1'&&!nextProps.isPlay)
+        this.getLyric(this.state.personalFMData[this.state.currentIndex].id)
     }
   }
 

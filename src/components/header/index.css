@@ -58,7 +58,7 @@ button {
     height: 10px;
     padding: 6px 0 6px 8px;
     font-size: 13px;
-    font-family: Arial,NSimsun,sans-serif;
+    font-family: Arial, NSimsun, sans-serif;
     background-color: rgb(168, 40, 40);
     color: white;
     outline: none;
@@ -133,7 +133,7 @@ button {
     opacity: 0.8;
     cursor: pointer;
     display: inline-block;
-    -webkit-transform:scale(0.96);
+    -webkit-transform: scale(0.96);
     font-weight: lighter;
 }
 
@@ -155,7 +155,7 @@ button {
     margin-left: 209px;
 }
 
-.skin, .email, .settings,.minimode, .minimize, .maximize, .close {
+.skin, .email, .settings, .minimode, .minimize, .maximize, .close {
     width: 21px;
     background-repeat: no-repeat;
     outline: none;
@@ -169,12 +169,12 @@ button {
     height: 28px;
 }
 
-.minimode,.minimize, .maximize, .close {
+.minimode, .minimize, .maximize, .close {
     background-image: url("../../static/images/window.jpg");
     height: 24px;
 }
 
-.skin:hover, .email:hover, .settings:hover, .minimode:hover,.minimize:hover, .maximize:hover, .close:hover {
+.skin:hover, .email:hover, .settings:hover, .minimode:hover, .minimize:hover, .maximize:hover, .close:hover {
     opacity: 1;
 }
 
@@ -197,6 +197,7 @@ button {
     border-color: transparent transparent transparent rgba(0, 0, 0, 0.15);
     vertical-align: middle;
 }
+
 .minimode {
     margin-left: 12px;
     background-position: 0 0;
@@ -207,11 +208,13 @@ button {
     background-position: -25px 0;
     position: relative;
 }
-.maximize{
+
+.maximize {
     margin-left: 3px;
     background-position: -50px 0;
 }
-.close{
+
+.close {
     margin-left: 4px;
     background-position: -75px 0;
 }
@@ -222,9 +225,11 @@ button {
     right: -120px;
     text-align: center;
 }
-.pointContainer{
+
+.pointContainer {
     position: relative;
 }
+
 .pointArrow {
     display: inline-block;
     transform: rotate(45deg);
@@ -238,17 +243,90 @@ button {
     top: 25px;
     left: 25px;
 }
-.pointBody{
+
+.pointBody {
     display: inline-block;
-    width:170px;
-    height:30px;
+    width: 170px;
+    height: 30px;
     line-height: 30px;
-    margin-left:-6px;
-    border-radius:200px/100px;
-    border:1px dashed red;
-    font-size:13px;
+    margin-left: -6px;
+    border-radius: 200px/100px;
+    border: 1px dashed red;
+    font-size: 13px;
     box-sizing: border-box;
 }
-.displayNone{
-     display: none;
- }
+
+.displayNone {
+    display: none;
+}
+
+.searchSuggest {
+    position: absolute;
+    width: 215px;
+    text-align: left;
+    background-color: rgb(250, 250, 250);
+    font-size: 12px;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+    box-shadow: 0 1px 3px 1px rgba(204, 204, 204, 0.61);
+    border-radius: 5px;
+    z-index: 3;
+}
+
+.searchSuggest p {
+    height: 25px;
+    line-height: 25px;
+    cursor: default;
+}
+
+.searchSuggest p:nth-of-type(1){
+    margin: 0 0 0 10px;
+    color: rgb(102,102,102);
+}
+
+.searchSuggest p:nth-of-type(1) span {
+    color: rgb(12, 115, 194);
+}
+
+.searchSuggest p img {
+    vertical-align: middle;
+    margin-left: 6px;
+    margin-top: -2px
+}
+
+.searchSuggest p:nth-of-type(2) {
+    margin: 0;
+    padding: 0 0 0 10px;
+    background-color: rgb(245, 245, 247);
+    color: rgb(51,51,51);
+}
+
+.searchSuggest p:nth-of-type(2) span{
+    display: inline-block;
+    background-image: url("../../static/images/sidebar.png");
+    width: 20px;
+    height: 25px;
+    background-position: -9px 31px;
+    vertical-align: middle;
+    font-size: 0;
+
+}
+.searchSuggest ul {
+    padding-bottom: 10px;
+}
+
+.searchSuggest li {
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 30px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.searchSuggest li:hover{
+    background-color: rgb(236,237,238);
+}

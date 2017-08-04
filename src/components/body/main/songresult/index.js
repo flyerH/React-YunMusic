@@ -50,6 +50,7 @@ class SongResult extends Component {
 
   getSongID(id) {
     this.props.getSongID(id);
+    this.props.changePlayIndex(-1)
   }
 
   render() {

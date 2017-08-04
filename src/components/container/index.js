@@ -6,12 +6,13 @@ import Footer from '../footer';
 import FindMusic from '../body/main/findmusic';
 import PersonalFM from '../body/main/personalfm';
 import SongResult from '../body/main/songresult';
+import nowPlay from '../body/nowplay';
 
 class Container extends Component {
   constructor() {
     super();
     this.state = {
-      currentIndex: '1',
+      currentIndex: '0',
       inputValue: '',
       songResultData: [],
       isLoading: false,
@@ -19,7 +20,8 @@ class Container extends Component {
       isMinimize:false,
       showMinimize:false,
       currentTime:0,
-      isPlay:false
+      isPlay:false,
+      playIndex:-1    //正在播放的歌所属模块
     }
   }
 
@@ -106,21 +108,28 @@ class Container extends Component {
       this.refs.PersonalFM.nextSong();
   }
 
+  changePlayIndex(index){
+    this.setState({
+      playIndex:index
+    })
+  }
+
   render() {
     let isSongResult = this.state.currentIndex === '-1' ? 'block' : 'none';
     let isFindMusic = this.state.currentIndex === '0' ? 'block' : 'none';
     let isPersonalFM = this.state.currentIndex === '1' ? 'block' : 'none';
     return (
         <div id="Container" className={this.state.isMinimize?"ContainerMinimize":"Container"}>
-          <Header isMinimize={this.state.isMinimize} setMinimize={this.setMinimize.bind(this)} getInput={this.getInput.bind(this)} changeIndex={this.changeIndex.bind(this)}/>
+          <Header isMinimize={this.state.isMinimize} setMinimize={this.setMinimize.bind(this)} getInput={this.getInput.bind(this)} changeIndex={this.changeIndex.bind(this)} getSongID={this.getSongID.bind(this)} changePlayIndex={this.changePlayIndex.bind(this)}/>
           <SideBar isMinimize={this.state.isMinimize} currentIndex={this.state.currentIndex} changeIndex={this.changeIndex.bind(this)}/>
           <div className={this.state.isMinimize?"displayNone":"tabs"}>
-            <SongResult songResultData={this.state.songResultData} isLoading={this.state.isLoading}
+            <SongResult playIndex={this.state.playIndex} changePlayIndex={this.changePlayIndex.bind(this)} songResultData={this.state.songResultData} isLoading={this.state.isLoading}
                         getSongID={this.getSongID.bind(this)} choice={isSongResult}/>
-            <FindMusic choice={isFindMusic} getSongID={this.getSongID.bind(this)}/>
-            <PersonalFM ref="PersonalFM" isPlay={this.state.isPlay} choice={isPersonalFM} currentTime={this.state.currentTime} getSongID={this.getSongID.bind(this)}/>
+            <FindMusic playIndex={this.state.playIndex} changePlayIndex={this.changePlayIndex.bind(this)} choice={isFindMusic} getSongID={this.getSongID.bind(this)}/>
+            <PersonalFM ref="PersonalFM" playIndex={this.state.playIndex} changePlayIndex={this.changePlayIndex.bind(this)} propsIndex={this.state.currentIndex} isPlay={this.state.isPlay} choice={isPersonalFM} currentTime={this.state.currentTime} getSongID={this.getSongID.bind(this)}/>
           </div>
           <Footer nextSong={this.nextSong.bind(this)} currentIndex={this.state.currentIndex} isPlay={this.isPlay.bind(this)} getCurrentTime={this.getCurrentTime.bind(this)}  isMinimize={this.state.isMinimize} songID={this.state.songID}/>
+          <nowPlay />
         </div>
     );
   }

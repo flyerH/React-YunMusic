@@ -79,6 +79,7 @@ class FindMusic extends Component {
 
   getSongID(id) {
     this.props.getSongID(id);
+    this.props.changePlayIndex(0)
   }
 
   render() {

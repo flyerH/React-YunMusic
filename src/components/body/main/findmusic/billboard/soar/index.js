@@ -50,6 +50,7 @@ class Soar extends Component {
     this.props.getSongID(id);
   }
 
+
   render() {
     const soar_arr = this.props.soar_arr;
     const getupdateTime = this.getupdateTime();
@@ -59,7 +60,7 @@ class Soar extends Component {
           <div className="billboard_list_title">
             <img src={soar_img} className="billboard_list_title1_img" alt="飙升榜"/>
             <span className="updateTime">{getupdateTime}</span>
-            <img src={play} className="billboard_list_play" alt="play_button"/>
+            <img src={play} className="billboard_list_play" alt="play_button" onClick={()=>{this.getSongID(soar_arr.tracks[0].id)}}/>
           </div>
           <div className="billboard_list_body">
             <ul className="billboard_list_body_ul" onClick={this.clickList.bind(this)}>
