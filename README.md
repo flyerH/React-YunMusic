@@ -1,6 +1,5 @@
 # React-YunMusic  
-
-##React仿网易云音乐
+## React仿网易云音乐
 
 React入门练手项目，在线访问地址请戳 [Demo](http://music.strawtc.cn)
   
