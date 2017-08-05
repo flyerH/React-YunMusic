@@ -121,6 +121,7 @@ class PersonalFM extends Component {
       this.setState({
         lastNextSong:Date.now()
       })
+    this.props.changePlayIndex(1);
     let currentIndex = this.state.currentIndex;
     if (currentIndex === 2) {
       this.setState({
@@ -158,7 +159,6 @@ class PersonalFM extends Component {
         })
         if(data.lrc.lyric!==undefined) {
           this.analyseLyric(data.lrc.lyric.toString());
-          this.scrollLyric();
         }
       }
       else
@@ -196,6 +196,7 @@ class PersonalFM extends Component {
       lyricObj: lrcObj,
       isLyricLoading: true
     })
+    this.scrollLyric();
   }
 
   scrollLyric(index) {
