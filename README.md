@@ -6,9 +6,18 @@ React入门练手项目，在线访问地址请戳 [Demo](http://music.strawtc.c
   
 网易云音乐的API大部分来源于另一个项目 [NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)
   
+由于网易云版权问题，可能有部分歌曲双击播放后没有反应，过阵子没有好转的话考虑更换API接口  
+
 ---
-### 效果展示
-![效果展示](https://static.strawtc.cn/wp-content/uploads/YunMusicRecord.gif)
+### 效果展示  
+##### 排行榜歌曲播放
+![排行榜](https://static.strawtc.cn/wp-content/uploads/YunMusicRecord1.gif)  
+
+##### 歌曲搜索播放&&进度/音量调整
+![歌曲搜索](https://static.strawtc.cn/wp-content/uploads/YunMusicRecord2.gif)  
+
+##### 私人FM&&歌词滚动
+![私人FM](https://static.strawtc.cn/wp-content/uploads/YunMusicRecord3.gif)  
 
 ### 安装
 ```
@@ -23,8 +32,8 @@ npm run start
 ### 打包编译
 ```
 npm run build
-```
- 
+```  
+
 ---  
 
 项目想要完整运行还需要上面提到的`NeteaseCloudMusicApi`项目提供后台数据
