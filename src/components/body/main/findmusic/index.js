@@ -29,7 +29,7 @@ class FindMusic extends Component {
       return res.json()
     }).then((data) => {
       this.setState({
-        soarData: data.result,
+        soarData: data.playlist,
       });
     }).catch(err => console.log(err));
 
@@ -39,7 +39,7 @@ class FindMusic extends Component {
       return res.json()
     }).then((data) => {
       this.setState({
-        newData: data.result,
+        newData: data.playlist,
       });
     }).catch(err => console.log(err));
 
@@ -49,7 +49,7 @@ class FindMusic extends Component {
       return res.json()
     }).then((data) => {
       this.setState({
-        originData: data.result,
+        originData: data.playlist,
       });
     }).catch(err => console.log(err));
 
@@ -61,7 +61,7 @@ class FindMusic extends Component {
     }).then((data) => {
       console.log("data1");
       this.setState({
-        hotsongData: data.result,
+        hotsongData: data.playlist,
       });
     }).catch(err => console.log(err));
 

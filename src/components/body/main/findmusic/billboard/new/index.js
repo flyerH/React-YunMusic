@@ -73,24 +73,24 @@ class New extends Component {
             <ul className="billboard_list2_body_ul" onClick={this.clickList.bind(this)}>
               {
                 [...new Array(8)].map((item, index) => {
-                  if (new_arr.tracks) {
+                 if (new_arr.tracks) {
                     let artists = [];
-                    new_arr.tracks[index].artists.map(function (item) {
+                    new_arr.tracks[index].ar.map(function (item) {
                       artists.push(item.name);
                       return true;
                     });
                     artists = artists.join('/');
-                    let alias = new_arr.tracks[index].alias;
-                    let transNames = new_arr.tracks[index].transNames;
+                    let alias = new_arr.tracks[index].alia;
+                    let transNames = new_arr.tracks[index].ar.tns;
                     if (transNames !== undefined)
                       alias = "(" + transNames + ")";
                     else if (alias.length)
                       alias = "(" + alias + ")";
-                    let lastRank = new_arr.tracks[index].lastRank;
-                    let songID = new_arr.tracks[index].id;
+                    let lastRank = new_arr.trackIds[index].lr;
+                    let songID = new_arr.trackIds[index].id;
                     let getRankPosition = '';
                     if (lastRank !== undefined) {
-                      getRankPosition = this.getRank(index, new_arr.tracks[index].lastRank);
+                      getRankPosition = this.getRank(index, lastRank);
                     }
                     else
                       getRankPosition = '-44';
@@ -103,8 +103,9 @@ class New extends Component {
                           <span>{artists}</span>
                         </li>
                     )
-                  } else
-                    return true;
+                  } else {
+                      return true;
+                    }
                 })
               }
             </ul>
