@@ -4,14 +4,16 @@
 React入门练手项目，在线访问地址请戳 [Demo](http://music.strawtc.cn)
   
   
-网易云音乐的API大部分来源于另一个项目 [Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)  
+网易云音乐的API部分由我抓包获取，另一部分来源于[Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)  
 
-由于网易云音乐API失效，原作者还没修复，我针对我用到的API进行抓包，并FORK了原作者的项目进行部分修复，所以你可以暂时用我上传的[flyerH/NeteaseCloudMusicApi](https://github.com/flyerH/NeteaseCloudMusicApi)  
+~~由于网易云音乐API失效，原作者还没修复，我针对我用到的API进行抓包，并FORK了原作者的项目进行部分修复，所以你可以暂时用我上传的[flyerH/NeteaseCloudMusicApi](https://github.com/flyerH/NeteaseCloudMusicApi)~~
   
 由于网易云音乐版权问题，可能有部分歌曲双击播放后没有反应，过阵子没有好转的话考虑更换API接口
 
 
 ### 版本更新
+##### 2018.10.09
+更新原本不安全的依赖
 ##### 2017.11.25
 修复API
 
