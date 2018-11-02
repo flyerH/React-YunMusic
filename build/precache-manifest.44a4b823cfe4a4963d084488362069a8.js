@@ -4,12 +4,12 @@ self.__precacheManifest = [
     "url": "/static/media/LOVE_static.1233a1c2.jpg"
   },
   {
-    "revision": "b20588e3108dd53e3ba8",
-    "url": "/static/css/main.ec690256.chunk.css"
+    "revision": "281930a77408526bb9ca",
+    "url": "/static/css/main.8edc75e7.chunk.css"
   },
   {
-    "revision": "b45f16697f7c7a21af30",
-    "url": "/static/js/1.b45f1669.chunk.js"
+    "revision": "beb3b648b57366f04ff7",
+    "url": "/static/js/1.beb3b648.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/static/media/softName.607d558c.png"
   },
   {
-    "revision": "b20588e3108dd53e3ba8",
-    "url": "/static/js/main.b20588e3.chunk.js"
+    "revision": "281930a77408526bb9ca",
+    "url": "/static/js/main.281930a7.chunk.js"
   },
   {
     "revision": "dc801d8516416a06a32e6a4cf87eeb6a",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/static/media/singer.2eaf2cdc.png"
   },
   {
-    "revision": "83d68f2b7a85ea07fd3ed2e986cb95e2",
+    "revision": "39b9192315376e3cff13d07c89c53730",
     "url": "/index.html"
   }
 ];
