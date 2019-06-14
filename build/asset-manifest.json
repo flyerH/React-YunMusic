@@ -1,19 +1,21 @@
 {
-  "main.css": "/static/css/main.8edc75e7.chunk.css",
-  "main.js": "/static/js/main.281930a7.chunk.js",
-  "main.js.map": "/static/js/main.281930a7.chunk.js.map",
-  "static/js/1.beb3b648.chunk.js": "/static/js/1.beb3b648.chunk.js",
-  "static/js/1.beb3b648.chunk.js.map": "/static/js/1.beb3b648.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "static/media/softName.png": "/static/media/softName.607d558c.png",
-  "static/media/newsong.png": "/static/media/newsong.dc801d85.png",
-  "static/media/origin.png": "/static/media/origin.50786270.png",
-  "static/media/hotsong.png": "/static/media/hotsong.cc296c7e.png",
-  "static/media/singer.png": "/static/media/singer.2eaf2cdc.png",
-  "static/media/LOVE_static.jpg": "/static/media/LOVE_static.1233a1c2.jpg",
-  "static/css/main.8edc75e7.chunk.css.map": "/static/css/main.8edc75e7.chunk.css.map",
-  "index.html": "/index.html",
-  "precache-manifest.44a4b823cfe4a4963d084488362069a8.js": "/precache-manifest.44a4b823cfe4a4963d084488362069a8.js",
-  "service-worker.js": "/service-worker.js"
+  "files": {
+    "main.css": "/static/css/main.cf5a7fb7.chunk.css",
+    "main.js": "/static/js/main.3b0bc70d.chunk.js",
+    "main.js.map": "/static/js/main.3b0bc70d.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/js/2.7cab7dc2.chunk.js": "/static/js/2.7cab7dc2.chunk.js",
+    "static/js/2.7cab7dc2.chunk.js.map": "/static/js/2.7cab7dc2.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7f5a1b7b3fa81519644b49068d7296a9.js": "/precache-manifest.7f5a1b7b3fa81519644b49068d7296a9.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.cf5a7fb7.chunk.css.map": "/static/css/main.cf5a7fb7.chunk.css.map",
+    "static/media/LOVE_static.jpg": "/static/media/LOVE_static.1233a1c2.jpg",
+    "static/media/hotsong.png": "/static/media/hotsong.cc296c7e.png",
+    "static/media/newsong.png": "/static/media/newsong.dc801d85.png",
+    "static/media/origin.png": "/static/media/origin.50786270.png",
+    "static/media/singer.png": "/static/media/singer.2eaf2cdc.png",
+    "static/media/softName.png": "/static/media/softName.607d558c.png"
+  }
 }
