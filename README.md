@@ -1,7 +1,7 @@
 # React-YunMusic  
 ## React仿网易云音乐
 
-React入门练手项目，在线访问地址请戳 [Demo](http://music.strawtc.cn)
+React入门练手项目
   
   
 网易云音乐的API部分由我抓包获取，另一部分来源于[Binaryify/NeteaseCloudMusicApi](https://github.com/Binaryify/NeteaseCloudMusicApi)  
